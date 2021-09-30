@@ -262,7 +262,7 @@ include "../include/nav.php";
         },
     
        success: FlutterwaveCheckout({
-      public_key: "FLWPUBK-847b8c9bf7252fb2a33cfcc3fe8fd32a-X",
+      public_key: "FLWPUBK-170928092ff34a546797b1bb7d5991eb-X",
       tx_ref: "pref"+Math.floor(Math.random() * 10000000),
       amount: payable,
       currency: "NGN",
@@ -279,22 +279,9 @@ include "../include/nav.php";
         phone_number: "<?php echo $phonenum ?>",
         name: "<?php echo $fname." ".$oname." ".$lname ?>",
       },
-      callback: function (data) {
-        var reference = data.tx_ref;
-        var amountpd = data.amount;
-        var pdstatus = data.status;
-      },
-        $.ajax({
-        url:'../backend/paystatus.php',
-        method:'POST',
-        data:{
-            
-            payref:reference,
-            payamount:amountpd,
-            paystatus:pdstatus
-            
-        },
-      }),
+      callback: function(data) {
+      
+    },
     
       onclose: function() {
         // close modal

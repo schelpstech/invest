@@ -171,7 +171,7 @@ $sql ="SELECT * from `hkfiles` where userid = '$id'";
     $img = $row['passport'];
 }
 else {
-    $img = "";
+    $img = "auser.jpg";
 }
 
 if( !empty($row['identity'])) {

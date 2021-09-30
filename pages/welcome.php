@@ -26,7 +26,7 @@ include "../include/nav.php";
                       <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pr-0 pt-3">
                         <div class="card-content">
                           <h5 class="font-15">No. of Slots</h5>
-                          <h2 class="mb-3 font-18">25</h2>
+                          <h2 class="mb-3 font-18">0</h2>
                           
                         </div>
                       </div>
@@ -48,7 +48,7 @@ include "../include/nav.php";
                       <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pr-0 pt-3">
                         <div class="card-content">
                           <h5 class="font-15"> Principal</h5>
-                          <h2 class="mb-3 font-18">&#8358;100,000</h2>
+                          <h2 class="mb-3 font-18">&#8358;0</h2>
                         
                         </div>
                       </div>
@@ -70,7 +70,7 @@ include "../include/nav.php";
                       <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pr-0 pt-3">
                         <div class="card-content">
                           <h5 class="font-15">Maturity Date</h5>
-                          <h2 class="mb-3 font-18">12-08-2022</h2>
+                          <h2 class="mb-3 font-18">00-00-0000</h2>
                          
                         </div>
                       </div>
@@ -92,7 +92,7 @@ include "../include/nav.php";
                       <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pr-0 pt-3">
                         <div class="card-content">
                           <h5 class="font-15"> Returns</h5>
-                          <h2 class="mb-3 font-18">&#8358;140,000</h2>
+                          <h2 class="mb-3 font-18">&#8358;0</h2>
                           
                         </div>
                       </div>
