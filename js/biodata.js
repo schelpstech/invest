@@ -257,3 +257,20 @@ else{
 }
 
 
+function calculator(){
+    var period = document.getElementById("duration").value;
+    var item = document.getElementById("slots").value;
+    var amount = item * 1000;
+    var charges = item * 20;
+    var pay = amount + charges;
+    var rate = 1+(0.40*(period/12));
+    var roi = rate * amount;
+
+    $("#amountval").val(amount);
+   $("#chargesval").val(charges);
+    $("#payval").val(pay);
+    $("#rate").val(rate);
+    $("#returns").val(roi);
+}
+
+

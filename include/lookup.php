@@ -106,27 +106,27 @@ $sql ="SELECT * from `hksignificant` where userid = '$id'";
 	$result = mysqli_query($con,$sql);
    $row = mysqli_fetch_array($result);
 
-   if( $row['fullname'] !== "" ) {
+   if( !empty($row['fullname'])) {
     $signname = $row['fullname'];
 }
 else {
     $signname = "";
 }
 
-if( $row['relationship'] !== "" ) {
+if( !empty($row['relationship'])) {
     $signrelate = $row['relationship'];
 }
 else {
     $signrelate = "";
 }
-if( $row['address'] !== "" ) {
+if( !empty($row['address'])) {
     $signadd= $row['address'];
 }
 else {
     $signadd = "";
 }
 
-if( $row['phonenumber'] !== "" ) {
+if( !empty($row['phonenumber'])) {
     $signphone = $row['phonenumber'];
 }
 else {
@@ -138,7 +138,7 @@ $sql ="SELECT * from `hkacctinfo` where userid = '$id'";
 	$result = mysqli_query($con,$sql);
    $row = mysqli_fetch_array($result);
 
-   if( $row['acctbank'] !== "" ) {
+   if( !empty($row['acctbank'])) {
     $acctbank = $row['acctbank'];
 }
 else {
@@ -146,7 +146,7 @@ else {
 }
 
 
-if( $row['acctnum'] !== "" ) {
+if( !empty($row['acctnum'])) {
     $num = $row['acctnum'];
 }
 else {
@@ -154,10 +154,51 @@ else {
 }
 
 
-if( $row['acctname'] !== "" ) {
+if( !empty($row['acctname'])) {
     $actname = $row['acctname'];
 }
 else {
     $actname = "";
 }
+
+
+//withdrawal l lookup
+$sql ="SELECT * from `hkfiles` where userid = '$id'";
+	$result = mysqli_query($con,$sql);
+   $row = mysqli_fetch_array($result);
+
+   if( !empty($row['passport'])) {
+    $img = $row['passport'];
+}
+else {
+    $img = "";
+}
+
+if( !empty($row['identity'])) {
+    $idcard = $row['identity'];
+}
+else {
+    $idcard = "";
+}
+
+
+//verification status
+
+if($fname !=="" & $lname !=="" & $oname !=="" & $gender !=="" & $dateofbirth !=="") {
+    $a = 20;
+}
+if($emailadd !=="" & $phonenum !=="" & $fulladd !=="" & $country !=="" & $state !=="" & $lga !=="") {
+    $b = 20;
+}
+if($signname !=="" & $signrelate !=="" & $signadd !=="" & $signphone !=="") {
+    $c = 20;
+}
+if($acctbank !=="" & $actname !=="" & $num !=="") {
+    $d = 20;
+}
+if($img !=="" & $idcard !=="") {
+    $e = 20;
+}
+
+$profilescore = intval($a) + intval($b)  + intval($c)  + intval($d)  + intval($e) ;
 ?>

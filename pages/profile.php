@@ -20,14 +20,14 @@ include "../include/nav.php";
                 <div class="card author-box">
                   <div class="card-body">
                     <div class="author-box-center">
-                      <img alt="image" src="assets/img/users/user-1.png" class="rounded-circle author-box-picture">
+                      <img alt="image" src="../resources/passport/<?php echo $img; ?>" class="rounded-circle author-box-picture">
                       <div class="clearfix"></div>
                       <div class="author-box-name">
                         <a href="#"><?php echo $fname." ".$oname." ".$lname; ?></a>
                       </div>
                       <div class="progress mb-3">
-                      <div class="progress-bar bg-success" role="progressbar" data-width="100%" aria-valuenow="100"
-                        aria-valuemin="0" aria-valuemax="100">100%</div>
+                      <div class="progress-bar bg-success" role="progressbar" data-width="<?php echo $profilescore; ?>%" aria-valuenow="<?php echo $profilescore; ?>"
+                        aria-valuemin="0" aria-valuemax="100"><?php echo $profilescore; ?>%</div>
                     </div>
                     <button type="button" class="btn btn-success btn-icon icon-left">
                         <i class="fas fa-check-double"></i> Account Verified<span class="badge badge-transparent"></span>
@@ -56,7 +56,7 @@ include "../include/nav.php";
                           Phone
                         </span>
                         <span class="float-right text-muted">
-                          (0123)123456789
+                        <?php echo $phonenum; ?>
                         </span>
                       </p>
                       <p class="clearfix">
@@ -64,7 +64,7 @@ include "../include/nav.php";
                           Mail
                         </span>
                         <span class="float-right text-muted">
-                          test@example.com
+                        <?php echo $emailadd; ?>
                         </span>
                       </p>
                     
@@ -332,11 +332,12 @@ if (mysqli_num_rows($result) > 0) {
                       <div class="tab-pane fade" id="doc" role="tabpanel" aria-labelledby="doc-tab">
                         <form  method ="POST" action="../backend/recordfile.php" class="needs-validation" enctype="multipart/form-data">
                           <div class="card-header">
-                            <h4>Document upload</h4>
+                            <h4>Passport Photograph</h4>
                           </div>
                           <div class="card-body">
                              
                             <div class="row">
+                            <iframe src="../resources/passport/<?php echo $img; ?>" height="200" width="300" title="<?php echo $mg; ?>"></iframe>
                             <div class="form-group col-md-8 col-12">
                                 <label>Passport Photograph </label>
                                 <input type="file" class="form-control" required="yes" name="passport">
@@ -351,11 +352,12 @@ if (mysqli_num_rows($result) > 0) {
 
                         <form  method ="POST" action="../backend/recordidfile.php" class="needs-validation" enctype="multipart/form-data">
                           <div class="card-header">
-                            <h4>Document upload</h4>
+                            <h4>Identification Card</h4>
                           </div>
                           <div class="card-body">
                              
                             <div class="row">
+                            <iframe src="../resources/idcard/<?php echo $idcard; ?> " height="200" width="300" title="<?php echo $idcard; ?>"></iframe>
                             <div class="form-group col-md-8 col-12">
                                 <label>Identification Card  </label>
                                 <input type="file" class="form-control" required="yes" name="identity">
