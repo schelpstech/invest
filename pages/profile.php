@@ -193,6 +193,7 @@ include "../include/nav.php";
                                 <option value="<?php echo $country; ?>"><?php echo $country; ?></option> 
                                 <option value="">Select Country</option>
                                 <?php
+                               
  $sql_query = "select DISTINCT country from location ORDER BY country ASC " ;
 $result = mysqli_query($con,$sql_query);
 if (mysqli_num_rows($result) > 0) {
