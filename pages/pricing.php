@@ -5,6 +5,14 @@ include "../include/nav.php";
       <div class="main-content">
         <section class="section">
           <div class="section-body">
+          <?php
+							
+              if (isset($_SESSION['acctinfo']) && $_SESSION['acctinfo'])
+              {
+                printf('<b>%s</b>', $_SESSION['acctinfo']);
+                unset($_SESSION['acctinfo']);
+              }
+            ?>  
             <div class="row">
             <div class="col-12 col-md-4 col-lg-4">
             <div class="pricing pricing-highlight">
@@ -246,7 +254,7 @@ include "../include/nav.php";
     var payable =$("#payval").val();
     var duration = $("#duration").val();
     var numslots = $("#slots").val();
-    var tref= "pref"+Math.floor(Math.random() * 10000000);
+    var tdref= "pref"+Math.floor(Math.random() * 10000000);
       if(numslots == ""){
            alert("Enter number of slots")
       }
@@ -258,18 +266,18 @@ include "../include/nav.php";
             payable:payable,
             duration:duration,
             numslots:numslots,
-            tref:tref
+            tref:tdref
         },
     
        success: FlutterwaveCheckout({
-      public_key: "FLWPUBK-170928092ff34a546797b1bb7d5991eb-X",
-      tx_ref: "pref"+Math.floor(Math.random() * 10000000),
+      public_key: "FLWPUBK-284a86b40549d34377ff47f7d9913fc7-X",
+      tx_ref: tdref,
       amount: payable,
       currency: "NGN",
       country: "NG",
       payment_options: " ",
       redirect_url: // specified redirect URL
-        "https://callbacks.piedpiper.com/flutterwave.aspx?ismobile=34",
+        '"../backend/paycheck.php?ref='+tdref+'"',
       meta: {
         consumer_id: "<?php echo $id ?>",
         consumer_mac: "92a3-912ba-1192a",
@@ -289,7 +297,7 @@ include "../include/nav.php";
       customizations: {
         title: "Hk Square Farms Investment Plan",
         description: "Payment of "+$("#payval").val()+" naira for "+$("#slots").val()+" investment slots",
-        logo: "https://assets.piedpiper.com/logo.png",
+        logo: "https://hksquarefarm.com/blog/wp-content/uploads/2021/09/logohk.png",
       },
     }),
   })
