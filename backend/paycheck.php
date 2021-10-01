@@ -28,7 +28,7 @@ curl_setopt_array($curl, array(
   CURLOPT_CUSTOMREQUEST => "GET",
   CURLOPT_HTTPHEADER => array(
     "Content-Type: application/json",
-    "Authorization: Bearer {{FLWSECK-9b5dcadc64bf3a16c4b4fe24a70dd1f6-X}}"
+    "Authorization: Bearer {{FLWSECK-d3af03e26260d8f241a336984a0b60bc-X}}"
   ),
 ));
 

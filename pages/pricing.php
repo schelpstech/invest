@@ -270,7 +270,7 @@ include "../include/nav.php";
         },
     
        success: FlutterwaveCheckout({
-      public_key: "FLWPUBK-284a86b40549d34377ff47f7d9913fc7-X",
+      public_key: "FLWPUBK-9e5415496741e03736d42b29c68f52ef-X",
       tx_ref: tdref,
       amount: payable,
       currency: "NGN",
