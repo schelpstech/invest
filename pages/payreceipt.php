@@ -19,9 +19,10 @@ $result=mysqli_query($con,$sql);
             $principal = "$row[principal]";
  }
 ?>
+
  <!-- Main Content -->
   <div class="main-content">
-        <section class="section">
+        <section class="section" id ="receipt">
           <div class="section-body">
             <div class="invoice">
               <div class="invoice-print">
@@ -124,9 +125,9 @@ $result=mysqli_query($con,$sql);
               <div class="text-md-right">
                 <div class="float-lg-left mb-lg-0 mb-3">
                   
-                  <button class="btn btn-danger btn-icon icon-left"><i class="fas fa-times"></i> Cancel</button>
+                  <button onclick="location.href='./report.php'" class="btn btn-danger btn-icon icon-left"><i class="fas fa-times"></i> Cancel</button>
                 </div>
-                <button class="btn btn-warning btn-icon icon-left"><i class="fas fa-print"></i> Print</button>
+                <button onclick="window.print()" class="btn btn-warning btn-icon icon-left"><i class="fas fa-print"></i> Print</button>
               </div>
             </div>
           </div>

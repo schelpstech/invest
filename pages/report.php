@@ -85,14 +85,13 @@ $result=mysqli_query($con,$sql);
                     <div class="card-icon card-icon-large"><i class="fa fa-money-bill-alt"></i></div>
                     <div class="card-content">
                       <h4 class="card-title">Earning</h4>
-                      <span>$2,658</span>
+                      <span>&#8358;0</span>
                       <div class="progress mt-1 mb-1" data-height="8">
                         <div class="progress-bar l-bg-green" role="progressbar" data-width="25%" aria-valuenow="25"
                           aria-valuemin="0" aria-valuemax="100"></div>
                       </div>
                       <p class="mb-0 text-sm">
-                        <span class="mr-2"><i class="fa fa-arrow-up"></i> 10%</span>
-                        <span class="text-nowrap">Since last month</span>
+                      <span class="text-nowrap">as at <?php echo date("d-m-Y"); ?></span>
                       </p>
                     </div>
                   </div>
