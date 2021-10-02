@@ -1,10 +1,16 @@
 <?php
 include "../controller/conf.php";
 
-if(!empty($_GET['ref'])) {
-    $txref = $_GET["ref"];  
+if (isset($_GET['tx_ref'])&&isset($_GET['status'])) {
+  $ref = $_GET['tx_ref'];
+  $state = $_GET['status'];
+
+  $query = array(
+      "SECKEY" => "FLWSECK_TEST-c08364f6b70e72c086ca0cc07303a1c0-X",
+      "txref" => $ref
+  ); 
     //validate transaction ref
-	$sql = "SELECT * FROM `hktransaction` WHERE tref  = '$txref'";
+	$sql = "SELECT * FROM `hktransaction` WHERE tref  = '$ref'";
 			$result=mysqli_query($con,$sql);
              $row=mysqli_fetch_array($result);
                         $userid = "$row[userid]";
@@ -12,53 +18,54 @@ if(!empty($_GET['ref'])) {
                         $duration = "$row[duration]";
                         $slot = "$row[slots]";
                 $principal = $payable - ($slot * 20);
-                $startinv = date("Y-m-d");
+                $startinv = date("d-m-Y");
 
-
-$curl = curl_init();
-
-curl_setopt_array($curl, array(
-  CURLOPT_URL => "https://api.flutterwave.com/v3/transactions/".$txref."/verify",
-  CURLOPT_RETURNTRANSFER => true,
-  CURLOPT_ENCODING => "",
-  CURLOPT_MAXREDIRS => 10,
-  CURLOPT_TIMEOUT => 0,
-  CURLOPT_FOLLOWLOCATION => true,
-  CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-  CURLOPT_CUSTOMREQUEST => "GET",
-  CURLOPT_HTTPHEADER => array(
-    "Content-Type: application/json",
-    "Authorization: Bearer {{FLWSECK_TEST-c08364f6b70e72c086ca0cc07303a1c0-X}}"
-  ),
-));
-
-$response = curl_exec($curl);
-
-curl_close($curl);
-
-$resp = json_decode($response, true);
+                
+          
+                  $data_string = json_encode($query);
+                          
+                  $ch = curl_init('https://ravesandboxapi.flutterwave.com/flwv3-pug/getpaidx/api/v2/verify');                                                                      
+                  curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+                  curl_setopt($ch, CURLOPT_POSTFIELDS, $data_string);                                              
+                  curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+                  curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+                  curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
+          
+                  $response = curl_exec($ch);
+          
+                  $header_size = curl_getinfo($ch, CURLINFO_HEADER_SIZE);
+                  $header = substr($response, 0, $header_size);
+                  $body = substr($response, $header_size);
+          
+                  curl_close($ch);
+          
+                  $resp = json_decode($response, true);
+          
+               
+                    // transaction data
 
 $paymentstatus = $resp['data']['status'];
-$transref = $resp['data']['tx_ref'];
+$transref = $resp['data']['txref'];
 $chargeamount = $resp['data']['amount'];
+$chargeResponsecode = $resp['data']['chargecode'];
 
-if (($paymentstatus == "success") && ($transref == $txref)  && ($chargeamount == $payable)) {
+if (($chargeResponsecode == "00" || $chargeResponsecode == "0") && ($paymentstatus ==  $state) && ($transref == $ref)  && ($chargeamount == $payable)) {
     
-    $sql= "UPDATE `hktransaction` SET paystatus = 1 WHERE tref  = '$txref'";
+    $sql= "UPDATE `hktransaction` SET paystatus = 1 WHERE tref  = '$ref'";
 		if(mysqli_query($con, $sql)){
 		}
         $sql= "INSERT INTO  `hkinvest` 
         (userid, payref, duration, slots, principal, `start`, `status`)  
-     VALUES ('$userid','$txref' ,'$duration', '$slots', '$principal','$startinv', 1)";
+     VALUES ('$userid','$ref' ,'$duration', '$slot', '$principal','$startinv', 1)";
 		if(mysqli_query($con, $sql)){	
 
 
-        $_SESSION['tref'] = $txref;
+        $_SESSION['tref'] = $ref;
           header("Location: ../pages/payreceipt.php");
     }
 }
 else{
-    $sql= "UPDATE `hktransaction` SET paystatus = 2 WHERE tref  = '$txref'";
+    $sql= "UPDATE `hktransaction` SET paystatus = 2 WHERE tref  = '$ref'";
 		if(mysqli_query($con, $sql)){
 		}
 
@@ -71,14 +78,14 @@ $_SESSION['acctinfo'] =  $feedback = '
             <button class="close" data-dismiss="alert">
                       <span>&times;</span>
                     </button>
-           Sorry! Your Payment Failed. Do try again!'.$txref.'
+           Sorry! Your Payment Failed. Do try again!'." - ".$ref." - ".$chargeResponsecode." - ".$paymentstatus." - ".$transref." - ".$chargeamount.'
          </div>
 </div>';
           header("Location: ../pages/pricing.php");
     }
 }
 else{
-    $sql= "UPDATE `hktransaction` SET status = 2 WHERE tref  = '$txref'";
+    $sql= "UPDATE `hktransaction` SET status = 2 WHERE tref  = '$ref'";
 		if(mysqli_query($con, $sql)){
 		}
 
@@ -96,3 +103,6 @@ $_SESSION['acctinfo'] =  $feedback = '
 </div>';
           header("Location: ../pages/pricing.php");
     }
+
+
+?>

@@ -277,10 +277,10 @@ include "../include/nav.php";
       country: "NG",
       payment_options: " ",
       redirect_url: // specified redirect URL
-        '"../backend/paycheck.php?ref='+tdref+'"',
+        'http://localhost/invest/backend/paycheck.php',
       meta: {
-        consumer_id: "<?php echo $id ?>",
-        consumer_mac: "92a3-912ba-1192a",
+        consumer_id: "<?php echo $_SESSION['uniqueid']; ?>",
+        consumer_mac: "<?php echo $_SESSION['token']; ?>",
       },
       customer: {
         email: "<?php echo $emailadd ?>",
