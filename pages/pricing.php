@@ -17,21 +17,21 @@ include "../include/nav.php";
             <div class="col-12 col-md-4 col-lg-4">
             <div class="pricing pricing-highlight">
                   <div class="pricing-title">
-                  <strong> 3 Months</strong>
+                  <strong><h4> 3 Months Payout </h4></strong>
                   </div>
                   <div class="pricing-padding">
                     <div class="pricing-price">
-                      <div>&#8358;1000</div>
+                      <div>&#8358;1,000</div>
                       <div>per slot</div>
                     </div>
                     <div class="pricing-details">
                       <div class="pricing-item">
                         <div class="pricing-item-icon"><i class="fas fa-check"></i></div>
-                        <div class="pricing-item-label">Maturity = 3months</div>
+                        <div class="pricing-item-label">Returns Payout = Every 3months</div>
                       </div>
                       <div class="pricing-item">
                         <div class="pricing-item-icon"><i class="fas fa-check"></i></div>
-                        <div class="pricing-item-label">Interest = 40% per annum</div>
+                        <div class="pricing-item-label">Interest = 10% of Principal</div>
                       </div>
                       <div class="pricing-item">
                         <div class="pricing-item-icon"><i class="fas fa-check"></i></div>
@@ -39,20 +39,27 @@ include "../include/nav.php";
                       </div>
                       <div class="pricing-item">
                         <div class="pricing-item-icon"><i class="fas fa-check"></i></div>
-                        <div class="pricing-item-label">Maximum Slot = 100 Slots</div>
+                        <div class="pricing-item-label">Maximum Slot = 
+                        <?php  
+                        $sql = " SELECT Sum(`slots`) as total FROM `hkinvest`";
+  $result=mysqli_query($con,$sql);
+ $row=mysqli_fetch_array($result);
+ $slotinv = "$row[total]";
+ echo 40000-$slotinv;
+?> Slots</div>
                       </div>
                       
                     </div>
                   </div>
                   <div class="pricing-cta">
-                  <button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#exampleModal"><strong>Select this Investment Option</strong><i class="fas fa-arrow-right"></i></button>
+                  <button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#exampleModal"><strong> <h5> Select this Investment </h5></strong><i class="fas fa-arrow-right"></i></button>
                   </div>
                 </div>
               </div>
               <div class="col-12 col-md-4 col-lg-4">
               <div class="pricing pricing-highlight">
                   <div class="pricing-title">
-                  <strong> 6 Months</strong>
+                  <strong><h4> 6 Months Payout </h4></strong>
                   </div>
                   <div class="pricing-padding">
                     <div class="pricing-price">
@@ -62,32 +69,39 @@ include "../include/nav.php";
                     <div class="pricing-details">
                       <div class="pricing-item">
                         <div class="pricing-item-icon"><i class="fas fa-check"></i></div>
-                        <div class="pricing-item-label">Maturity = 6 months</div>
+                        <div class="pricing-item-label">Returns Payout = Every 6 months</div>
                       </div>
                       <div class="pricing-item">
                         <div class="pricing-item-icon"><i class="fas fa-check"></i></div>
-                        <div class="pricing-item-label">Interest = 40% per annum</div>
+                        <div class="pricing-item-label">Interest = 20% of Principal</div>
                       </div>
                       <div class="pricing-item">
                         <div class="pricing-item-icon"><i class="fas fa-check"></i></div>
-                        <div class="pricing-item-label">Minimum Slot = 10 Slot</div>
+                        <div class="pricing-item-label">Minimum Slot = 1 Slot</div>
                       </div>
                       <div class="pricing-item">
                         <div class="pricing-item-icon"><i class="fas fa-check"></i></div>
-                        <div class="pricing-item-label">Maximum Slot = 5,000 Slots</div>
+                        <div class="pricing-item-label">Maximum Slot = 
+                        <?php  
+                        $sql = " SELECT Sum(`slots`) as total FROM `hkinvest`";
+  $result=mysqli_query($con,$sql);
+ $row=mysqli_fetch_array($result);
+ $slotinv = "$row[total]";
+ echo 40000-$slotinv;
+?> Slots</div>
                       </div>
                       
                     </div>
                   </div>
                   <div class="pricing-cta">
-                  <button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#exampleModal"><strong>Select this Investment Option</strong><i class="fas fa-arrow-right"></i></button>
+                  <button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#exampleModal"><strong> <h5> Select this Investment </h5></strong><i class="fas fa-arrow-right"></i></button>
                   </div>
                 </div>
               </div>
               <div class="col-12 col-md-4 col-lg-4">
               <div class="pricing pricing-highlight">
                   <div class="pricing-title">
-                  <strong> 12 Months</strong>
+                  <strong><h4> 12 Months Payout </h4></strong>
                   </div>
                   <div class="pricing-padding">
                     <div class="pricing-price">
@@ -97,25 +111,32 @@ include "../include/nav.php";
                     <div class="pricing-details">
                       <div class="pricing-item">
                         <div class="pricing-item-icon"><i class="fas fa-check"></i></div>
-                        <div class="pricing-item-label">Maturity = 12 months</div>
+                        <div class="pricing-item-label">Returns Payout = 12months</div>
                       </div>
                       <div class="pricing-item">
                         <div class="pricing-item-icon"><i class="fas fa-check"></i></div>
-                        <div class="pricing-item-label">Interest = 40% per annum</div>
+                        <div class="pricing-item-label">Interest = 40% of Principal</div>
                       </div>
                       <div class="pricing-item">
                         <div class="pricing-item-icon"><i class="fas fa-check"></i></div>
-                        <div class="pricing-item-label">Minimum Slot = 10 Slot</div>
+                        <div class="pricing-item-label">Minimum Slot = 1 Slot</div>
                       </div>
                       <div class="pricing-item">
                         <div class="pricing-item-icon"><i class="fas fa-check"></i></div>
-                        <div class="pricing-item-label">Maximum Slot = 10,000 Slots</div>
+                        <div class="pricing-item-label">Maximum Slot = 
+                        <?php  
+                        $sql = " SELECT Sum(`slots`) as total FROM `hkinvest`";
+  $result=mysqli_query($con,$sql);
+ $row=mysqli_fetch_array($result);
+ $slotinv = "$row[total]";
+ echo 40000-$slotinv;
+?> Slots</div>
                       </div>
                       
                     </div>
                   </div>
                   <div class="pricing-cta">
-                  <button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#exampleModal"><strong>Select this Investment Option</strong><i class="fas fa-arrow-right"></i></button>
+                  <button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#exampleModal"><strong> <h5> Select this Investment </h5></strong><i class="fas fa-arrow-right"></i></button>
                   </div>
                 </div>
               </div>
@@ -130,7 +151,7 @@ include "../include/nav.php";
           <div class="modal-dialog" role="document">
             <div class="modal-content">
               <div class="modal-header">
-                <h5 class="modal-title" id="formModal">Investment Subscription Form</h5>
+                <h5 class="modal-title" id="formModal" style="text-align: center;">Investment Subscription Form</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>
@@ -139,7 +160,7 @@ include "../include/nav.php";
                 <form class="">
                 <div class="form-row">
                       <div class="form-group col-md-6">
-                    <label>Duration</label>
+                    <label>Preferred Payout Interval</label>
                     <div class="input-group">
                       <div class="input-group-prepend">
                         <div class="input-group-text">
@@ -221,7 +242,7 @@ include "../include/nav.php";
                     </div>
                   </div>
                   <div class="form-group col-md-6">
-                    <label>Expected Return on Investment</label>
+                    <label>Projected Value</label>
                     <div class="input-group">
                       <div class="input-group-prepend">
                         <div class="input-group-text">
@@ -236,6 +257,7 @@ include "../include/nav.php";
                     <div class="custom-control custom-checkbox">
                       <input type="checkbox" name="remember" required="yes" class="custom-control-input" id="remember-me">
                       <label class="custom-control-label" for="remember-me">Proceed to Make Payment to Complete Subscription</label>
+                      <small><br>I agree that my principal amount invested be locked for 12 month and interest paid at my selected payout period.</small>
                     </div>
                   </div>
                   <script src="https://checkout.flutterwave.com/v3.js"></script>

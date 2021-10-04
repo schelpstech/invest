@@ -18,7 +18,7 @@ if (isset($_GET['tx_ref'])&&isset($_GET['status'])) {
                         $duration = "$row[duration]";
                         $slot = "$row[slots]";
                 $principal = $payable - ($slot * 20);
-                $startinv = date("d-m-Y");
+                $startinv = date("Y-m-d");
 
                 
           
